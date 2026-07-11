@@ -1,1 +1,1 @@
-# lupzum.github.io
+Landing Cápsula React Vite
