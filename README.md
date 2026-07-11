@@ -1,1 +1,1 @@
-Landing Cápsula React Vite
+Cápsula
