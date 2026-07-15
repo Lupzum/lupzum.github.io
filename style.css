@@ -59,6 +59,7 @@ body {
     linear-gradient(90deg, rgba(247, 244, 240, .97) 0%, rgba(247, 244, 240, .84) 38%, rgba(247, 244, 240, .06) 73%),
     url('images/home-bg.jpg') 70% center/cover;
   position: relative;
+  overflow: hidden;
 }
 
 /* --- Navegación dentro del hero --- */
@@ -537,7 +538,7 @@ footer {
 
   /* --- Hero --- */
   .hero {
-    min-height: 650px;
+    min-height: 550px;
     background-position: 63% center;
   }
 
@@ -575,11 +576,50 @@ footer {
   }
 
   .hero-copy {
-    padding-top: 85px;
+    padding-top: 60px;
+    position: relative;
+    z-index: 5;
   }
 
   .hero h1 {
-    font-size: 64px;
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .hero-copy .lead {
+    font-size: 16px;
+  }
+
+  /* --- Hero Phone para mobile --- */
+  .hero-phone {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 280px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+  }
+
+  .hero-phone img {
+    transform: rotate(0deg);
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* --- CTA Button para mobile --- */
+  .cta-button {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto 0;
+    padding: 14px 24px;
+    font-size: 1rem;
+    justify-content: center;
   }
 
   /* --- Layout compartido --- */
@@ -824,18 +864,6 @@ footer {
     transform:translateY(-3px);
     background:#9f8169;
 }
-
-background:
-
-linear-gradient(
-90deg,
-rgba(248,245,240,.95) 0%,
-rgba(248,245,240,.80) 34%,
-rgba(248,245,240,.25) 68%,
-rgba(0,0,0,.10) 100%
-),
-
-url(images/feature-mockup.png);
 
 .hero-copy{
 max-width:520px;
