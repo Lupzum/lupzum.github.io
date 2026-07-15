@@ -1,0 +1,975 @@
+/* ==========================================================================
+   CÁPSULA — style.css
+   Organizado y comentado a partir del archivo original (sin cambiar valores)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. FUENTES
+   Importa Playfair Display (serif, titulares) e Inter (sans, cuerpo/UI)
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. VARIABLES GLOBALES (design tokens)
+   Colores y fuentes reutilizados en todo el sitio
+   -------------------------------------------------------------------------- */
+:root {
+  --ink: #1d1a18;                          /* color de texto principal / oscuro */
+  --paper: #f5f2ed;                        /* fondo base claro (ivory) */
+  --sand: #a88970;                         /* color de acento (taupe) */
+  --soft: #e9e0d6;                         /* fondo suave secundario */
+  --serif: 'Playfair Display', Georgia, serif;   /* fuente editorial (títulos) */
+  --sans: 'Inter', Arial, sans-serif;            /* fuente de UI (cuerpo, nav, botones) */
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET / BASE
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 21px;
+}
+
+/* Contenedor centrado con ancho máximo, usado en todas las secciones */
+.shell {
+  width: min(1170px, calc(100% - 56px));
+  margin: auto;
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO (sección principal / portada)
+   -------------------------------------------------------------------------- */
+
+/* Bloque completo del hero: degradé sobre imagen de fondo */
+.hero {
+  min-height: 700px;
+  width:100%;
+  background:
+    linear-gradient(90deg, rgba(247, 244, 240, .97) 0%, rgba(247, 244, 240, .84) 38%, rgba(247, 244, 240, .06) 73%),
+    url('images/home-bg.jpg') 70% center/cover;
+  position: relative;
+}
+
+/* --- Navegación dentro del hero --- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 27px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  font: 500 26px var(--serif);
+  letter-spacing: -1.2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a,
+.footer-grid a {
+  color: #faf8f5;
+  text-decoration: none;
+  font-size: 18px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.25);
+}
+
+/* Botón CTA destacado dentro de la navegación */
+.nav-cta {
+  padding: 11px 20px;
+  background: #99806a;
+  color: white !important;
+  border-radius: 18px;
+}
+
+/* Botón "hamburguesa" del menú mobile (oculto en desktop) */
+.menu-button {
+  display: none;
+}
+
+/* --- Copy / texto del hero --- */
+.hero-copy {
+  padding-top: 110px;
+}
+
+/* Texto pequeño superior tipo "kicker" (ej: "NUEVA COLECCIÓN") */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 17px;
+  color: #806c5d;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+/* Titulares generales (h1 del hero y h2 del resto del sitio) */
+.hero h1,
+h2 {
+  font: 500 49px/.94 var(--serif);
+  letter-spacing: -1.8px;
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: 75px;
+}
+
+/* Palabra/frase en itálica dentro de un título, con color de acento */
+.hero em,
+h2 em {
+  font-weight: 400;
+  color: #917966;
+}
+
+/* Párrafo de bajada debajo del titular del hero */
+.lead {
+  max-width: 370px;
+  line-height: 1.65;
+  font-size: 20px;
+  margin: 24px 0;
+}
+
+/* Contenedor de botones de acción (CTA principal + secundario) */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* --- Estilo base de botones --- */
+.button {
+/*  display: inline-flex; */
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: .25px;
+  text-decoration: none;
+  border: 0;
+  border-radius: 2px;
+  height: 43px;
+  padding: 0 22px;
+  font: 600 10px var(--sans);
+  cursor: pointer;
+}
+
+.call {
+  background: #A9917A;
+  color: white !important;
+  padding: 11px 20px; 
+  border-radius: 18px;
+  font: 600 20px var(--sans);
+}
+
+.dark {
+  background: #191817;
+  color: #fff;
+}
+
+.light {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* Texto pequeño debajo de los botones (ej: fecha/condición de lanzamiento) */
+.launch {
+  font-size: 17px;
+  color: #806c5d;
+  margin-top: 21px;
+}
+
+/* --------------------------------------------------------------------------
+   5. LAYOUT COMPARTIDO (grillas y paddings reutilizables)
+   -------------------------------------------------------------------------- */
+
+/* Grilla de 2 columnas iguales, usada en secciones tipo "split" (texto + foto) */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Padding vertical + horizontal responsivo, centrado según ancho de ventana */
+.pad {
+  padding: 75px max(48px, calc((100vw - 1170px) / 2));
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN "PROBLEMA" (planteo del problema que resuelve el producto)
+   -------------------------------------------------------------------------- */
+.problem h2 {
+  font-size: 52px;
+}
+
+/* Línea divisoria corta, usada como separador decorativo */
+.rule {
+  height: 1px;
+  width: 42px;
+  background: #9b806a;
+  margin: 24px 0;
+}
+
+/* Grilla de 3 columnas con mini íconos + texto (bullets del problema) */
+.micro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.line-icon {
+  font: 29px var(--serif);
+  color: #947861;
+}
+
+.micro-grid h3 {
+  font-size: 17px;
+  margin: 10px 0 3px;
+}
+
+.micro-grid p {
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Foto de ancho completo dentro del split (ej: foto de placard/vestidor) */
+.wardrobe-photo {
+  min-height: 410px;
+  background: url('images/team-image1.jpg') center/cover;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN "SOLUCIÓN"
+   -------------------------------------------------------------------------- */
+.solution {
+  padding: 70px 0 78px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.solution h2,
+.how h2 {
+  font-size: 50px;
+}
+
+/* Grilla de 3 columnas con los beneficios del producto (ícono + título + texto) */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
+  text-align: center;
+  margin: 43px 0 0;
+}
+
+/* Ícono circular con borde, usado en cada beneficio */
+.round-icon {
+  border: 1px solid #c7b9aa;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 32px var(--serif);
+  color: #856e5d;
+}
+
+.benefits h3 {
+  font: 500 18px var(--serif);
+  margin: 13px 0 7px;
+}
+
+.benefits p {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 190px;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN "CÓMO FUNCIONA" (pasos del proceso)
+   -------------------------------------------------------------------------- */
+.how {
+  padding: 20px 0 70px;
+  background: #f9f7f4;
+}
+
+/* Lista de 6 pasos en grilla horizontal */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 42px 0 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+}
+
+.steps li {
+  position: relative;
+  text-align: center;
+  min-width: 0;
+}
+
+/* Número de cada paso (ej: "01") */
+.steps b {
+  font: 400 23px var(--serif);
+  margin-right: 7px;
+}
+
+.steps span {
+  font-size: 25px;
+  color: #8e7867;
+}
+
+/* Título y descripción de cada paso */
+.steps strong,
+.steps i {
+  display: block;
+  font-size: 16px;
+  margin: 7px 0 0;
+  font-style: normal;
+}
+
+.steps i {
+  font-size: 15px;
+  color: #7a726c;
+  margin: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN "EXPERIENCE" (bloque oscuro con imagen destacada)
+   -------------------------------------------------------------------------- */
+.experience {
+  background: #151514;
+  color: #fff;
+  padding: 62px 0;
+  overflow: hidden;
+}
+
+.experience-inner {
+  display: flex;
+  align-items: center;
+  min-height: 290px;
+}
+
+.experience h2 {
+  font-size: 54px;
+}
+
+.experience p:not(.eyebrow) {
+  font-size: 18px;
+  line-height: 1.55;
+  max-width: 280px;
+}
+
+/* Texto secundario sobre fondo oscuro (menor contraste que blanco puro) */
+.light-text {
+  color: #d9cec3;
+}
+
+/* Link de texto subrayado (ej: "Ver más") sobre fondo oscuro */
+.text-link {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #887764;
+  padding-bottom: 5px;
+}
+
+/* Imagen destacada del bloque, con sombra difuminada tipo "flotante" */
+.experience img {
+  width: 48%;
+  max-height: 360px;
+  object-fit: contain;
+  margin-left: auto;
+  filter: drop-shadow(0 20px 20px #000);
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN "PURPOSE" (propósito / testimonio, split con foto)
+   -------------------------------------------------------------------------- */
+.purpose-photo {
+  min-height: 410px;
+  background: url('images/testimonial-image.jpg') center/cover;
+}
+
+.purpose-copy h2 {
+  font-size: 51px;
+}
+
+/* Fila de datos/estadísticas destacadas (ej: "10.000+ prendas") */
+.purpose-points {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 33px;
+}
+
+.purpose-points span {
+  font: 23px var(--serif);
+  color: #806c5d;
+}
+
+.purpose-points b {
+  display: block;
+  color: var(--ink);
+  font: 600 9px var(--sans);
+  line-height: 1.4;
+  margin-top: 7px;
+}
+
+/* --------------------------------------------------------------------------
+   11. SECCIÓN "JOIN" (banner de suscripción / captación de leads)
+   -------------------------------------------------------------------------- */
+.join {
+  background: linear-gradient(105deg, #b99a7e, #d7c2ad);
+  padding: 27px 0;
+}
+
+.join-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.join h2 {
+  font-size: 39px;
+  color: white;
+}
+
+.join p {
+  font-size: 17px;
+  line-height: 1.5;
+  color: white;
+  margin: 5px 0 0;
+}
+
+.join-form {
+  display: flex;
+  gap: 10px;
+}
+
+.join input {
+  border: 0;
+  background: white;
+  height: 40px;
+  padding: 0 14px;
+  width: 220px;
+  font: 10px var(--sans);
+}
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+footer {
+  background: #1c1b1a;
+  color: #f7f3ee;
+  padding: 37px 0;
+}
+
+/* Grilla del footer: 1 columna ancha (marca/texto) + 3 columnas de links */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2.3fr repeat(3, 1fr);
+  gap: 30px;
+}
+
+.footer-grid p {
+  font-size: 17px;
+  color: #ddd1c6;
+}
+
+.footer-grid b {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: #b6a796;
+  margin-bottom: 9px;
+}
+
+.footer-grid a {
+  display: block;
+  margin: 5px 0;
+  color: #eee;
+  font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   13. UTILIDADES
+   -------------------------------------------------------------------------- */
+
+/* Oculta contenido visualmente pero lo deja accesible para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* ==========================================================================
+   14. RESPONSIVE — hasta 720px (mobile/tablet chico)
+   ========================================================================== */
+@media (max-width: 720px) {
+
+  .shell {
+    width: min(100% - 36px, 560px);
+  }
+
+  /* --- Hero --- */
+  .hero {
+    min-height: 650px;
+    background-position: 63% center;
+  }
+
+  .nav {
+    padding: 20px 0;
+  }
+
+  /* Muestra el botón hamburguesa en mobile */
+  .menu-button {
+    display: block;
+    background: transparent;
+    border: 0;
+    text-transform: uppercase;
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+
+  /* Menú desplegable mobile (oculto por defecto) */
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 65px;
+    flex-direction: column;
+    align-items: stretch;
+    background: #f6f3ef;
+    padding: 20px;
+    min-width: 190px;
+    box-shadow: 0 8px 20px #0002;
+  }
+
+  /* Estado abierto del menú mobile (toggle vía JS) */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero-copy {
+    padding-top: 85px;
+  }
+
+  .hero h1 {
+    font-size: 64px;
+  }
+
+  /* --- Layout compartido --- */
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .pad {
+    padding: 57px 28px;
+  }
+
+  /* --- Problema --- */
+  .wardrobe-photo {
+    min-height: 280px;
+  }
+
+  .problem h2 {
+    font-size: 46px;
+  }
+
+  .benefits,
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 29px;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solution h2,
+  .how h2 {
+    font-size: 45px;
+  }
+
+  /* --- Experience --- */
+  .experience-inner {
+    display: block;
+  }
+
+  .experience img {
+    display: block;
+    width: 100%;
+    margin: 24px auto 0;
+    max-height: 270px;
+  }
+
+  /* --- Purpose --- */
+  .purpose-photo {
+    min-height: 300px;
+  }
+
+  /* --- Join --- */
+  .join-inner {
+    display: block;
+  }
+
+  .join-form {
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+
+  .join input {
+    flex: 1;
+    min-width: 190px;
+  }
+
+  /* --- Footer --- */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .micro-grid {
+    gap: 9px;
+  }
+
+  .purpose-points {
+    gap: 8px;
+  }
+
+  .hero .lead {
+    max-width: 300px;
+  }
+}
+
+/* ==========================================================================
+   15. MOCKUPS VISUALES — franja de "teléfonos" tipo showcase de la app
+   Reproduce visualmente varias pantallas de celular en fila (referencia visual)
+   ========================================================================== */
+
+/* Grilla de 6 "teléfonos" en fila */
+.phone-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  margin: 25px 0 0;
+  align-items: end;
+}
+
+/* Marco individual de cada mockup de teléfono */
+.phone {
+  height: 207px;
+  border: 2px solid #37322d;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+  background: #f2ece4;
+  box-shadow: inset 0 0 0 4px #fbf8f3;
+  padding: 22px 9px 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* "Notch" decorativo en la parte superior del teléfono */
+.phone:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 5px;
+  background: #292622;
+  border-radius: 99px;
+}
+
+.phone small {
+  display: block;
+  font: 500 10px/1.1 var(--serif);
+  margin: 5px 0 9px;
+}
+
+.phone p {
+  font-size: 14px;
+  line-height: 1.25;
+  margin: 0 0 6px;
+}
+
+.phone img {
+  width: 100%;
+  height: 61px;
+  object-fit: cover;
+}
+
+/* Fila de 2 imágenes lado a lado dentro de un mockup (ej: comparación de looks) */
+.look-row {
+  display: flex;
+  gap: 3px;
+  margin: 3px 0;
+}
+
+.look-row img {
+  width: 50%;
+  height: 59px;
+  object-fit: cover;
+}
+
+/* Bloque simulando un "mapa" o resultado dentro de un mockup */
+.phone .map {
+  height: 94px;
+  background: #e1d3c2;
+  color: #8f715a;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+/* Rotaciones y alturas individuales para dar efecto "esparcido" a cada teléfono */
+.screen-one {
+}
+
+.screen-two {
+}
+
+.screen-three {
+}
+
+.screen-four {
+}
+
+.screen-five {
+}
+
+.screen-six {
+}
+
+.screen-six img {
+}
+
+/* Versión mobile de la galería de teléfonos: 2 columnas en vez de 6 */
+@media (max-width: 720px) {
+  .phone-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* ==========================================================================
+   celu de la portada
+   ========================================================================== */
+
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:650px;
+}
+
+.hero-phone{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:absolute;
+    right:10%;
+    top:-20px;
+    z-index:10;
+    width:520px;
+}
+
+.hero-phone img{
+    width:100%;
+    transform:rotate(12deg);
+    filter:drop-shadow(0 30px 40px rgba(0,0,0,.28));
+    animation:float 5s ease-in-out infinite;
+    max-width:520px;
+    height:auto;
+}
+
+.hero-button{
+    margin-top:28px;
+    background:#b09178;
+    color:white;
+    padding:16px 34px;
+    border-radius:35px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+background:
+
+linear-gradient(
+90deg,
+rgba(248,245,240,.95) 0%,
+rgba(248,245,240,.80) 34%,
+rgba(248,245,240,.25) 68%,
+rgba(0,0,0,.10) 100%
+),
+
+url(images/feature-mockup.png);
+
+.hero-copy{
+max-width:520px;
+}
+
+.hero h1{
+font-size:72px;
+line-height:.95;
+}
+
+.hero{
+padding-top:20px;
+}
+
+
+/* ==========================================================================
+   botón de PROBÁ LA APP
+   ========================================================================== */
+
+.cta-button{
+    position:absolute;
+    right:200px;
+    bottom:170px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:18px 36px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.35);
+    background:linear-gradient(
+        180deg,
+        #cda785 0%,
+        #b7906f 100%
+    );
+
+    color:#faf8f5;
+    font-size:1.2rem;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:
+        0 18px 35px rgba(21,21,20,.28),
+        inset 0 2px 1px rgba(255,255,255,.28),
+        inset 0 -2px 2px rgba(0,0,0,.08);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+
+/* ==========================================================================
+   pie de página
+   ========================================================================== */
+
+.footer{
+    padding:50px 20px;
+    background:#151514;
+    text-align:center;
+}
+
+.footer-title{
+    color:#faf8f5;
+    font-family:"Inter", sans-serif;
+    font-size:15px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+    opacity:.85;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap:34px;
+    flex-wrap:wrap;
+}
+
+.social-links a{
+    color:#faf8f5;
+    font-size:24px;
+    transition:.3s ease;
+}
+
+.social-links a:hover{
+    color:#b09178;
+    transform:translateY(-3px);
+}
+
+/* ==========================
+   HERO MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+  .hero{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow:hidden;
+    padding-bottom:48px;
+  }
+
+  .hero-copy{
+    width:100%;
+    max-width:560px;
+    text-align:center;
+    z-index:2;
+  }
+
+  .hero-phone{
+    position:relative;
+    right:auto;
+    top:auto;
+    transform:none;
+
+    margin-top:32px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    max-width:320px;
+
+    z-index:2;
+  }
+
+  .hero-phone img{
+    width:100%;
+    max-width:240px;
+    height:auto;
+    display:block;
+  }
+
+  .cta-button{
+    margin-top:20px;
+    width:220px;
+    text-align:center;
+  }
+
+}
