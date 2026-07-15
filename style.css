@@ -633,7 +633,7 @@ footer {
 
   /* --- Hero --- */
   .hero {
-    min-height: 550px;
+    min-height: 450px;
     background-position: 63% center;
   }
 
@@ -671,18 +671,27 @@ footer {
   }
 
   .hero-copy {
-    padding-top: 60px;
+    padding-top: 30px;
     position: relative;
     z-index: 5;
+    width: 100%;
   }
 
   .hero h1 {
-    font-size: 48px;
-    line-height: 1;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .hero-copy .eyebrow {
+    font-size: 12px;
+    margin-bottom: 8px;
   }
 
   .hero-copy .lead {
-    font-size: 16px;
+    font-size: 14px;
+    max-width: 100%;
+    margin: 12px 0;
+    line-height: 1.5;
   }
 
   /* --- Hero Phone para mobile --- */
@@ -692,9 +701,9 @@ footer {
     top: auto !important;
     transform: none !important;
     width: 100% !important;
-    max-width: 280px !important;
-    margin: 30px auto 0 !important;
-    padding: 0 20px !important;
+    max-width: 220px !important;
+    margin: 15px auto 0 !important;
+    padding: 0 !important;
   }
 
   .hero-phone img {
@@ -702,6 +711,7 @@ footer {
     max-width: 100% !important;
     width: 100% !important;
     animation: none !important;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,.15)) !important;
   }
 
   /* --- CTA Button para mobile --- */
@@ -709,14 +719,15 @@ footer {
     position: relative !important;
     right: auto !important;
     bottom: auto !important;
-    display: flex !important;
-    width: 100% !important;
-    max-width: 250px !important;
-    margin: 20px auto 0 !important;
-    padding: 14px 24px !important;
-    font-size: 1rem !important;
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: 90% !important;
+    margin: 12px auto 0 !important;
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
     justify-content: center !important;
     animation: none !important;
+    gap: 8px !important;
   }
 
   /* --- Layout compartido --- */
@@ -798,7 +809,7 @@ footer {
   }
 
   .hero .lead {
-    max-width: 300px;
+    max-width: 100%;
   }
 }
 
