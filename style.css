@@ -633,12 +633,15 @@ footer {
 
   /* --- Hero --- */
   .hero {
-    min-height: 450px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 20px;
     background-position: 63% center;
   }
 
   .nav {
-    padding: 20px 0;
+    padding: 15px 0;
   }
 
   /* Muestra el botón hamburguesa en mobile */
@@ -671,26 +674,27 @@ footer {
   }
 
   .hero-copy {
-    padding-top: 30px;
-    position: relative;
-    z-index: 5;
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-    line-height: 1.1;
+    padding: 20px 28px 0 !important;
+    max-width: none !important;
+    width: 100% !important;
   }
 
   .hero-copy .eyebrow {
-    font-size: 12px;
+    font-size: 11px;
+    margin: 0 0 8px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    line-height: 1.15;
     margin-bottom: 8px;
   }
 
   .hero-copy .lead {
-    font-size: 14px;
+    font-size: 13px;
     max-width: 100%;
-    margin: 12px 0;
+    margin: 12px 0 16px;
     line-height: 1.5;
   }
 
@@ -701,8 +705,8 @@ footer {
     top: auto !important;
     transform: none !important;
     width: 100% !important;
-    max-width: 220px !important;
-    margin: 15px auto 0 !important;
+    max-width: 200px !important;
+    margin: 0 auto 16px !important;
     padding: 0 !important;
   }
 
@@ -711,7 +715,7 @@ footer {
     max-width: 100% !important;
     width: 100% !important;
     animation: none !important;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,.15)) !important;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,.12)) !important;
   }
 
   /* --- CTA Button para mobile --- */
@@ -721,13 +725,14 @@ footer {
     bottom: auto !important;
     display: inline-flex !important;
     width: auto !important;
-    max-width: 90% !important;
-    margin: 12px auto 0 !important;
-    padding: 12px 20px !important;
-    font-size: 0.9rem !important;
+    max-width: none !important;
+    margin: 0 auto 0 !important;
+    padding: 10px 18px !important;
+    font-size: 0.85rem !important;
     justify-content: center !important;
     animation: none !important;
-    gap: 8px !important;
+    gap: 6px !important;
+    white-space: nowrap;
   }
 
   /* --- Layout compartido --- */
