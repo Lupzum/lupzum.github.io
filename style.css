@@ -793,10 +793,11 @@ footer {
     flex-direction:column;
     align-items:center;
     position:absolute;
-    right:10%;
+    right:50%;
     top:-20px;
     z-index:10;
-    width:520px;
+    width:min(520px, 90%);
+    transform:translateX(50%);
 }
 
 .hero-phone img{
