@@ -60,6 +60,7 @@ body {
     url('images/home-bg.jpg') 70% center/cover;
   position: relative;
   overflow: hidden;
+  padding-top: 20px;
 }
 
 /* --- Navegación dentro del hero --- */
@@ -109,6 +110,7 @@ body {
 /* --- Copy / texto del hero --- */
 .hero-copy {
   padding-top: 110px;
+  max-width: 520px;
 }
 
 /* Texto pequeño superior tipo "kicker" (ej: "NUEVA COLECCIÓN") */
@@ -130,7 +132,8 @@ h2 {
 }
 
 .hero h1 {
-  font-size: 75px;
+  font-size: 72px;
+  line-height: .95;
 }
 
 /* Palabra/frase en itálica dentro de un título, con color de acento */
@@ -528,6 +531,98 @@ footer {
 }
 
 /* ==========================================================================
+   HERO PHONE STYLES (Desktop)
+   ========================================================================== */
+
+.hero-phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 50%;
+  top: -20px;
+  z-index: 10;
+  width: min(520px, 90%);
+  transform: translateX(50%);
+}
+
+.hero-phone img {
+  width: 100%;
+  transform: rotate(12deg);
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,.28));
+  animation: float 5s ease-in-out infinite;
+  max-width: 520px;
+  height: auto;
+}
+
+.cta-button {
+  position: absolute;
+  right: 200px;
+  bottom: 170px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: linear-gradient(
+    180deg,
+    #cda785 0%,
+    #b7906f 100%
+  );
+  color: #faf8f5;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 18px 35px rgba(21, 21, 20, .28),
+    inset 0 2px 1px rgba(255, 255, 255, .28),
+    inset 0 -2px 2px rgba(0, 0, 0, .08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+  animation: floatButton 4s ease-in-out infinite;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.05);
+  box-shadow:
+    0 24px 42px rgba(21, 21, 20, .35),
+    inset 0 2px 1px rgba(255, 255, 255, .30),
+    inset 0 -2px 2px rgba(0, 0, 0, .08);
+}
+
+.cta-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 8px 16px rgba(21, 21, 20, .25);
+}
+
+@keyframes float {
+  0% {
+    transform: rotate(12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(12deg) translateY(-8px);
+  }
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+}
+
+@keyframes floatButton {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ==========================================================================
    14. RESPONSIVE — hasta 720px (mobile/tablet chico)
    ========================================================================== */
 @media (max-width: 720px) {
@@ -592,34 +687,36 @@ footer {
 
   /* --- Hero Phone para mobile --- */
   .hero-phone {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 280px;
-    margin: 30px auto 0;
-    padding: 0 20px;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 30px auto 0 !important;
+    padding: 0 20px !important;
   }
 
   .hero-phone img {
-    transform: rotate(0deg);
-    max-width: 100%;
-    width: 100%;
+    transform: rotate(0deg) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    animation: none !important;
   }
 
   /* --- CTA Button para mobile --- */
   .cta-button {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    display: flex;
-    width: 100%;
-    max-width: 250px;
-    margin: 20px auto 0;
-    padding: 14px 24px;
-    font-size: 1rem;
-    justify-content: center;
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: flex !important;
+    width: 100% !important;
+    max-width: 250px !important;
+    margin: 20px auto 0 !important;
+    padding: 14px 24px !important;
+    font-size: 1rem !important;
+    justify-content: center !important;
+    animation: none !important;
   }
 
   /* --- Layout compartido --- */
@@ -818,177 +915,39 @@ footer {
 }
 
 /* ==========================================================================
-   celu de la portada
-   ========================================================================== */
-
-.hero-content{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    min-height:650px;
-}
-
-.hero-phone{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    position:absolute;
-    right:50%;
-    top:-20px;
-    z-index:10;
-    width:min(520px, 90%);
-    transform:translateX(50%);
-}
-
-.hero-phone img{
-    width:100%;
-    transform:rotate(12deg);
-    filter:drop-shadow(0 30px 40px rgba(0,0,0,.28));
-    animation:float 5s ease-in-out infinite;
-    max-width:520px;
-    height:auto;
-}
-
-.hero-button{
-    margin-top:28px;
-    background:#b09178;
-    color:white;
-    padding:16px 34px;
-    border-radius:35px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-.hero-button:hover{
-    transform:translateY(-3px);
-    background:#9f8169;
-}
-
-.hero-copy{
-max-width:520px;
-}
-
-.hero h1{
-font-size:72px;
-line-height:.95;
-}
-
-.hero{
-padding-top:20px;
-}
-
-@keyframes float{
-0%{
-transform:rotate(12deg) translateY(0);
-}
-50%{
-transform:rotate(12deg) translateY(-8px);
-}
-100%{
-transform:rotate(12deg) translateY(0);
-}
-}
-
-
-/* ==========================================================================
-   botón de PROBÁ LA APP
-   ========================================================================== */
-
-.cta-button{
-    position:absolute;
-    right:200px;
-    bottom:170px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    padding:18px 36px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.35);
-    background:linear-gradient(
-        180deg,
-        #cda785 0%,
-        #b7906f 100%
-    );
-
-    color:#faf8f5;
-    font-size:1.2rem;
-    font-weight:600;
-    text-decoration:none;
-    box-shadow:
-        0 18px 35px rgba(21,21,20,.28),
-        inset 0 2px 1px rgba(255,255,255,.28),
-        inset 0 -2px 2px rgba(0,0,0,.08);
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        filter .25s ease;
-}
-
-.cta-button:hover{
-    transform:translateY(-4px);
-    filter:brightness(1.05);
-    box-shadow:
-        0 24px 42px rgba(21,21,20,.35),
-        inset 0 2px 1px rgba(255,255,255,.30),
-        inset 0 -2px 2px rgba(0,0,0,.08);
-}
-
-.cta-button:active{
-    transform:translateY(1px);
-    box-shadow:
-        0 8px 16px rgba(21,21,20,.25);
-}
-
-@keyframes floatButton{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-3px);
-    }
-}
-
-.cta-button{
-    animation:floatButton 4s ease-in-out infinite;
-}
-
-/* ==========================================================================
    pie de página
    ========================================================================== */
 
-.footer{
-    padding:50px 20px;
-    background:#151514;
-    text-align:center;
+.footer {
+  padding: 50px 20px;
+  background: #151514;
+  text-align: center;
 }
 
-.footer-title{
-    color:#faf8f5;
-    font-family:"Inter", sans-serif;
-    font-size:15px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    margin-bottom:28px;
-    opacity:.85;
+.footer-title {
+  color: #faf8f5;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: .85;
 }
 
-.social-links{
-    display:flex;
-    justify-content:center;
-    gap:34px;
-    flex-wrap:wrap;
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  flex-wrap: wrap;
 }
 
-.social-links a{
-    color:#faf8f5;
-    font-size:24px;
-    transition:.3s ease;
+.social-links a {
+  color: #faf8f5;
+  font-size: 24px;
+  transition: .3s ease;
 }
 
-.social-links a:hover{
-    color:#b09178;
-    transform:translateY(-3px);
+.social-links a:hover {
+  color: #b09178;
+  transform: translateY(-3px);
 }
